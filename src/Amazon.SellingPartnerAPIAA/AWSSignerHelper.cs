@@ -1,10 +1,10 @@
-﻿using RestSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
+using RestSharp;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace Amazon.SellingPartnerAPIAA
 {
@@ -13,7 +13,8 @@ namespace Amazon.SellingPartnerAPIAA
         public const string ISO8601BasicDateTimeFormat = "yyyyMMddTHHmmssZ";
         public const string ISO8601BasicDateFormat = "yyyyMMdd";
 
-        public const string XAmzDateHeaderName = "X-Amz-Date";
+        //public const string XAmzDateHeaderName = "X-Amz-Date";
+        public const string XAmzDateHeaderName = "x-amz-date";
         public const string AuthorizationHeaderName = "Authorization";
         public const string CredentialSubHeaderName = "Credential";
         public const string SignatureSubHeaderName = "Signature";
@@ -212,6 +213,7 @@ namespace Amazon.SellingPartnerAPIAA
             // Calculate the signature
             return Utils.ToHex(Utils.GetKeyedHash(kSigning, stringToSign));
         }
+
 
         /// <summary>
         /// Add a signature to a request in the form of an 'Authorization' header

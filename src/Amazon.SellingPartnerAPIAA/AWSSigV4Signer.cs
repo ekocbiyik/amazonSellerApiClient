@@ -49,8 +49,6 @@ namespace Amazon.SellingPartnerAPIAA
                                          awsCredentials.Region,
                                          signingDate);
 
-            Console.WriteLine(stringToSign + "\n");
-
             return request;
         }
 
@@ -75,10 +73,7 @@ namespace Amazon.SellingPartnerAPIAA
             // Hash(digest) the payload in the body
             canonicalizedRequest.AppendFormat(AwsSignerHelper.HashRequestBody(restRequest));
 
-            string canonicalRequest = canonicalizedRequest.ToString();
-
-            //Create a digest(hash) of the canonical request
-            return Utils.ToHex(Utils.Hash(canonicalRequest));
+            return Utils.ToHex(Utils.Hash(canonicalizedRequest.ToString()));
         }
     }
 }
